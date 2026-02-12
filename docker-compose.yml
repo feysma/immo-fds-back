@@ -7,7 +7,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-immofds}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-immofds}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "${POSTGRES_PORT:-5434}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
@@ -25,9 +25,9 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      LIQUIBASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-immofds}
-      LIQUIBASE_USERNAME: ${POSTGRES_USER:-immofds}
-      LIQUIBASE_PASSWORD: ${POSTGRES_PASSWORD:-immofds}
+      LIQUIBASE_COMMAND_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-immofds}
+      LIQUIBASE_COMMAND_USERNAME: ${POSTGRES_USER:-immofds}
+      LIQUIBASE_COMMAND_PASSWORD: ${POSTGRES_PASSWORD:-immofds}
     restart: "no"
 
   app:
