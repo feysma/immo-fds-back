@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <include file="changelogs/001-create-properties-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/002-create-property-images-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/003-create-contact-requests-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/004-create-users-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/005-create-refresh-tokens-table.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/006-insert-default-super-admin.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="001-create-properties-table" author="feysma">
+        <createTable tableName="properties">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="reference" type="varchar(20)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="property_type" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_type" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(15)" defaultValue="DRAFT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="numeric(12, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surface" type="double"/>
+            <column name="bedrooms" type="int"/>
+            <column name="bathrooms" type="int"/>
+            <column name="rooms" type="int"/>
+            <column name="floors" type="int"/>
+            <column name="construction_year" type="int"/>
+            <column name="energy_rating" type="varchar(15)"/>
+            <column name="garden" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="garage" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="terrace" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="basement" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="elevator" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="furnished" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number" type="varchar(10)"/>
+            <column name="postal_code" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="province" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latitude" type="double"/>
+            <column name="longitude" type="double"/>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="idx_properties_reference" tableName="properties">
+            <column name="reference"/>
+        </createIndex>
+        <createIndex indexName="idx_properties_status" tableName="properties">
+            <column name="status"/>
+        </createIndex>
+        <createIndex indexName="idx_properties_property_type" tableName="properties">
+            <column name="property_type"/>
+        </createIndex>
+        <createIndex indexName="idx_properties_transaction_type" tableName="properties">
+            <column name="transaction_type"/>
+        </createIndex>
+        <createIndex indexName="idx_properties_province" tableName="properties">
+            <column name="province"/>
+        </createIndex>
+        <createIndex indexName="idx_properties_city" tableName="properties">
+            <column name="city"/>
+        </createIndex>
+        <createIndex indexName="idx_properties_price" tableName="properties">
+            <column name="price"/>
+        </createIndex>
+        <createIndex indexName="idx_properties_postal_code" tableName="properties">
+            <column name="postal_code"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
