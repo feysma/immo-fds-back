@@ -1,15 +1,19 @@
 package be.feysdigitalservices.immofds.controller;
 
+import be.feysdigitalservices.immofds.config.SecurityConfig;
 import be.feysdigitalservices.immofds.controller.pub.PublicPropertyController;
 import be.feysdigitalservices.immofds.dto.response.PageResponse;
 import be.feysdigitalservices.immofds.dto.response.PropertyDetailResponse;
 import be.feysdigitalservices.immofds.dto.response.PropertySummaryResponse;
+import be.feysdigitalservices.immofds.security.JwtAuthenticationFilter;
 import be.feysdigitalservices.immofds.service.PropertyImageService;
 import be.feysdigitalservices.immofds.service.PropertyService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -21,7 +25,9 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(PublicPropertyController.class)
+@WebMvcTest(controllers = PublicPropertyController.class,
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
+                classes = {SecurityConfig.class, JwtAuthenticationFilter.class}))
 @AutoConfigureMockMvc(addFilters = false)
 class PublicPropertyControllerTest {
 

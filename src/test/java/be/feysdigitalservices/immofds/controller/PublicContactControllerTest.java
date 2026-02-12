@@ -1,13 +1,16 @@
 package be.feysdigitalservices.immofds.controller;
 
+import be.feysdigitalservices.immofds.config.SecurityConfig;
 import be.feysdigitalservices.immofds.controller.pub.PublicContactController;
 import be.feysdigitalservices.immofds.dto.response.ContactRequestResponse;
+import be.feysdigitalservices.immofds.security.JwtAuthenticationFilter;
 import be.feysdigitalservices.immofds.service.ContactRequestService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -18,15 +21,14 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(PublicContactController.class)
+@WebMvcTest(controllers = PublicContactController.class,
+        excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE,
+                classes = {SecurityConfig.class, JwtAuthenticationFilter.class}))
 @AutoConfigureMockMvc(addFilters = false)
 class PublicContactControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @MockitoBean
     private ContactRequestService contactRequestService;
