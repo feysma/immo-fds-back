@@ -16,12 +16,26 @@ services:
       timeout: 5s
       retries: 5
 
+  liquibase:
+    build:
+      context: .
+      dockerfile: Dockerfile.liquibase
+    container_name: immofds-liquibase
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      LIQUIBASE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-immofds}
+      LIQUIBASE_USERNAME: ${POSTGRES_USER:-immofds}
+      LIQUIBASE_PASSWORD: ${POSTGRES_PASSWORD:-immofds}
+    restart: "no"
+
   app:
     build: .
     container_name: immofds-app
     depends_on:
-      postgres:
-        condition: service_healthy
+      liquibase:
+        condition: service_completed_successfully
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-immofds}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-immofds}

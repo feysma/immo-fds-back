@@ -1,0 +1,12 @@
+FROM liquibase/liquibase:4.31
+
+COPY src/main/resources/db/changelog /liquibase/changelog
+
+ENTRYPOINT ["liquibase"]
+CMD [ \
+  "--url=${LIQUIBASE_URL}", \
+  "--username=${LIQUIBASE_USERNAME}", \
+  "--password=${LIQUIBASE_PASSWORD}", \
+  "--changelog-file=changelog/db.changelog-master.xml", \
+  "update" \
+]
