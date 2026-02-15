@@ -9,7 +9,7 @@
     <changeSet id="006-insert-default-super-admin" author="feysma">
         <insert tableName="users">
             <column name="email" value="admin@immofds.be"/>
-            <column name="password" value="$2a$10$6JjZ0eIBfI74rrVhZN2.6.bdSpr4nb8LTymUvuiShr7.gzeVdyKBi"/>
+            <column name="password" value="$2b$10$OxDUU6hDg3P6gZ3Odlcay.bBk8yYkEbvYPPV9znJKd4zcN4Arqy.a"/>
             <column name="first_name" value="Admin"/>
             <column name="last_name" value="ImmoFDS"/>
             <column name="role" value="SUPER_ADMIN"/>
