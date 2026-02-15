@@ -47,9 +47,9 @@ public interface ContactRequestMapper {
     @Mapping(target = "updatedAt", ignore = true)
     ContactRequest toEntity(VisitRequestDto request);
 
-    @Mapping(target = "contactType", expression = "java(entity.getContactType().getLabel())")
-    @Mapping(target = "status", expression = "java(entity.getStatus().getLabel())")
-    @Mapping(target = "propertyType", expression = "java(entity.getPropertyType() != null ? entity.getPropertyType().getLabel() : null)")
+    @Mapping(target = "contactType", expression = "java(entity.getContactType().name())")
+    @Mapping(target = "status", expression = "java(entity.getStatus().name())")
+    @Mapping(target = "propertyType", expression = "java(entity.getPropertyType() != null ? entity.getPropertyType().name() : null)")
     @Mapping(target = "createdAt", source = "createdAt", qualifiedByName = "formatDateTime")
     @Mapping(target = "updatedAt", source = "updatedAt", qualifiedByName = "formatDateTime")
     ContactRequestResponse toResponse(ContactRequest entity);

@@ -20,7 +20,7 @@ public interface UserMapper {
     @Mapping(target = "updatedAt", ignore = true)
     User toEntity(UserCreateRequest request);
 
-    @Mapping(target = "role", expression = "java(user.getRole().getLabel())")
+    @Mapping(target = "role", expression = "java(user.getRole().name())")
     @Mapping(target = "createdAt", source = "createdAt", qualifiedByName = "formatDateTime")
     UserResponse toResponse(User user);
 
