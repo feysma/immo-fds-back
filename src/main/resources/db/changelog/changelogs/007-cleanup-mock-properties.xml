@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Clean up mock data on every deployment -->
+    <changeSet id="007-cleanup-mock-properties" author="feysma" runAlways="true">
+        <!-- Delete all property images first (foreign key constraint) -->
+        <delete tableName="property_images"/>
+        <!-- Delete all properties -->
+        <delete tableName="properties"/>
+        <!-- Reset sequences -->
+        <sql>ALTER SEQUENCE properties_id_seq RESTART WITH 1;</sql>
+        <sql>ALTER SEQUENCE property_images_id_seq RESTART WITH 1;</sql>
+    </changeSet>
+
+</databaseChangeLog>

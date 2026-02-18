@@ -11,5 +11,7 @@
     <include file="changelogs/004-create-users-table.xml" relativeToChangelogFile="true"/>
     <include file="changelogs/005-create-refresh-tokens-table.xml" relativeToChangelogFile="true"/>
     <include file="changelogs/006-insert-default-super-admin.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/007-cleanup-mock-properties.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/008-insert-mock-properties.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

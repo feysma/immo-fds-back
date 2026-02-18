@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Insert mock properties with various types and transaction types -->
+    <changeSet id="008-insert-mock-properties" author="feysma" runAlways="true">
+
+        <!-- Property 1: House for Sale in Brussels -->
+        <insert tableName="properties">
+            <column name="reference" value="IMMO-2026-001"/>
+            <column name="title" value="Maison spacieuse à Bruxelles"/>
+            <column name="description" value="Magnifique maison de maître avec 4 chambres, jardin privé et garage. Proximité transport en commun et commerces. Chauffage au gaz, chaudière récente."/>
+            <column name="property_type" value="HOUSE"/>
+            <column name="transaction_type" value="SALE"/>
+            <column name="status" value="PUBLISHED"/>
+            <column name="price" value="450000.00"/>
+            <column name="surface" value="180.5"/>
+            <column name="bedrooms" value="4"/>
+            <column name="bathrooms" value="2"/>
+            <column name="rooms" value="7"/>
+            <column name="floors" value="3"/>
+            <column name="construction_year" value="1998"/>
+            <column name="energy_rating" value="D"/>
+            <column name="garden" valueBoolean="true"/>
+            <column name="garage" valueBoolean="true"/>
+            <column name="terrace" valueBoolean="true"/>
+            <column name="basement" valueBoolean="true"/>
+            <column name="elevator" valueBoolean="false"/>
+            <column name="furnished" valueBoolean="false"/>
+            <column name="street" value="Rue de la Paix"/>
+            <column name="number" value="42"/>
+            <column name="postal_code" value="1000"/>
+            <column name="city" value="Bruxelles"/>
+            <column name="province" value="BRUXELLES_CAPITALE"/>
+            <column name="latitude" value="50.8503"/>
+            <column name="longitude" value="4.3517"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Property 2: Apartment for Rent in Liege -->
+        <insert tableName="properties">
+            <column name="reference" value="IMMO-2026-002"/>
+            <column name="title" value="Appartement moderne à Liège"/>
+            <column name="description" value="Bel appartement T3 en étage élevé avec ascenseur. Balcon, cuisine équipée, chauffage collectif. Vues sur la ville. Idéal pour couple ou petit famille."/>
+            <column name="property_type" value="APARTMENT"/>
+            <column name="transaction_type" value="RENT"/>
+            <column name="status" value="PUBLISHED"/>
+            <column name="price" value="750.00"/>
+            <column name="surface" value="85.0"/>
+            <column name="bedrooms" value="2"/>
+            <column name="bathrooms" value="1"/>
+            <column name="rooms" value="4"/>
+            <column name="floors" value="7"/>
+            <column name="construction_year" value="2015"/>
+            <column name="energy_rating" value="B"/>
+            <column name="garden" valueBoolean="false"/>
+            <column name="garage" valueBoolean="false"/>
+            <column name="terrace" valueBoolean="true"/>
+            <column name="basement" valueBoolean="false"/>
+            <column name="elevator" valueBoolean="true"/>
+            <column name="furnished" valueBoolean="true"/>
+            <column name="street" value="Avenue Montesquieu"/>
+            <column name="number" value="15"/>
+            <column name="postal_code" value="4000"/>
+            <column name="city" value="Liège"/>
+            <column name="province" value="LIEGE"/>
+            <column name="latitude" value="50.6292"/>
+            <column name="longitude" value="5.5699"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Property 3: Studio for Sale in Antwerp -->
+        <insert tableName="properties">
+            <column name="reference" value="IMMO-2026-003"/>
+            <column name="title" value="Studio compact à Anvers"/>
+            <column name="description" value="Petit studio parfait pour étudiant ou jeune actif. Entièrement rénové, cuisine ouvert sur séjour. Proche université et gare centrale."/>
+            <column name="property_type" value="STUDIO"/>
+            <column name="transaction_type" value="SALE"/>
+            <column name="status" value="PUBLISHED"/>
+            <column name="price" value="125000.00"/>
+            <column name="surface" value="32.0"/>
+            <column name="bedrooms" value="0"/>
+            <column name="bathrooms" value="1"/>
+            <column name="rooms" value="2"/>
+            <column name="floors" value="4"/>
+            <column name="construction_year" value="2020"/>
+            <column name="energy_rating" value="A"/>
+            <column name="garden" valueBoolean="false"/>
+            <column name="garage" valueBoolean="false"/>
+            <column name="terrace" valueBoolean="false"/>
+            <column name="basement" valueBoolean="false"/>
+            <column name="elevator" valueBoolean="true"/>
+            <column name="furnished" valueBoolean="false"/>
+            <column name="street" value="Meir"/>
+            <column name="number" value="88"/>
+            <column name="postal_code" value="2000"/>
+            <column name="city" value="Anvers"/>
+            <column name="province" value="ANVERS"/>
+            <column name="latitude" value="51.2194"/>
+            <column name="longitude" value="4.3997"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Property 4: Office for Sale in Walloon Brabant -->
+        <insert tableName="properties">
+            <column name="reference" value="IMMO-2026-004"/>
+            <column name="title" value="Bureau professionnel à Waterloo"/>
+            <column name="description" value="Space de bureau moderne et flexible. Open space de 120m². Accès parking, salle de réunion commune, internet haut débit inclus."/>
+            <column name="property_type" value="OFFICE"/>
+            <column name="transaction_type" value="SALE"/>
+            <column name="status" value="PUBLISHED"/>
+            <column name="price" value="350000.00"/>
+            <column name="surface" value="120.0"/>
+            <column name="bedrooms" value="0"/>
+            <column name="bathrooms" value="2"/>
+            <column name="rooms" value="4"/>
+            <column name="floors" value="2"/>
+            <column name="construction_year" value="2010"/>
+            <column name="energy_rating" value="C"/>
+            <column name="garden" valueBoolean="false"/>
+            <column name="garage" valueBoolean="true"/>
+            <column name="terrace" valueBoolean="false"/>
+            <column name="basement" valueBoolean="true"/>
+            <column name="elevator" valueBoolean="true"/>
+            <column name="furnished" valueBoolean="false"/>
+            <column name="street" value="Rue du Château"/>
+            <column name="number" value="120"/>
+            <column name="postal_code" value="1410"/>
+            <column name="city" value="Waterloo"/>
+            <column name="province" value="BRABANT_WALLON"/>
+            <column name="latitude" value="50.4018"/>
+            <column name="longitude" value="4.4169"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Property 5: Loft for Sale in Ghent -->
+        <insert tableName="properties">
+            <column name="reference" value="IMMO-2026-005"/>
+            <column name="title" value="Loft trendy à Gand"/>
+            <column name="description" value="Loft spacieux dans ancien bâtiment industriel rénové. Hauteur sous plafond exceptionnelle, baies vitrées, poutres apparentes. Quartier bohème, restaurants et galeries à proximité."/>
+            <column name="property_type" value="LOFT"/>
+            <column name="transaction_type" value="SALE"/>
+            <column name="status" value="PUBLISHED"/>
+            <column name="price" value="280000.00"/>
+            <column name="surface" value="95.0"/>
+            <column name="bedrooms" value="1"/>
+            <column name="bathrooms" value="1"/>
+            <column name="rooms" value="3"/>
+            <column name="floors" value="3"/>
+            <column name="construction_year" value="2012"/>
+            <column name="energy_rating" value="C"/>
+            <column name="garden" valueBoolean="false"/>
+            <column name="garage" valueBoolean="false"/>
+            <column name="terrace" valueBoolean="true"/>
+            <column name="basement" valueBoolean="false"/>
+            <column name="elevator" valueBoolean="true"/>
+            <column name="furnished" valueBoolean="false"/>
+            <column name="street" value="Sint-Pieterskaai"/>
+            <column name="number" value="50"/>
+            <column name="postal_code" value="9000"/>
+            <column name="city" value="Gand"/>
+            <column name="province" value="FLANDRE_ORIENTALE"/>
+            <column name="latitude" value="51.0543"/>
+            <column name="longitude" value="3.7196"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Property 6: Commercial Retail Space for Rent in Namur -->
+        <insert tableName="properties">
+            <column name="reference" value="IMMO-2026-006"/>
+            <column name="title" value="Local commercial à Namur"/>
+            <column name="description" value="Petit local commercial en centre-ville, actuellement loué. Rez-de-chaussée, très visible et accessible. Parfait pour boutique ou restaurant."/>
+            <column name="property_type" value="RETAIL_SPACE"/>
+            <column name="transaction_type" value="RENT"/>
+            <column name="status" value="PUBLISHED"/>
+            <column name="price" value="1200.00"/>
+            <column name="surface" value="50.0"/>
+            <column name="bedrooms" value="0"/>
+            <column name="bathrooms" value="1"/>
+            <column name="rooms" value="1"/>
+            <column name="floors" value="1"/>
+            <column name="construction_year" value="1995"/>
+            <column name="energy_rating" value="E"/>
+            <column name="garden" valueBoolean="false"/>
+            <column name="garage" valueBoolean="false"/>
+            <column name="terrace" valueBoolean="true"/>
+            <column name="basement" valueBoolean="false"/>
+            <column name="elevator" valueBoolean="false"/>
+            <column name="furnished" valueBoolean="true"/>
+            <column name="street" value="Rue de la Paix"/>
+            <column name="number" value="5"/>
+            <column name="postal_code" value="5000"/>
+            <column name="city" value="Namur"/>
+            <column name="province" value="NAMUR"/>
+            <column name="latitude" value="50.4656"/>
+            <column name="longitude" value="4.8720"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Property 7: Land for Sale in Hainaut (no image) -->
+        <insert tableName="properties">
+            <column name="reference" value="IMMO-2026-007"/>
+            <column name="title" value="Terrain à bâtir au Hainaut"/>
+            <column name="description" value="Belle parcelle de terrain constructible. Situation calme en zone verte. Accès route principale à 2km. Permis d'urbanisme possible."/>
+            <column name="property_type" value="LAND"/>
+            <column name="transaction_type" value="SALE"/>
+            <column name="status" value="PUBLISHED"/>
+            <column name="price" value="85000.00"/>
+            <column name="surface" value="1200.0"/>
+            <column name="bedrooms" value="0"/>
+            <column name="bathrooms" value="0"/>
+            <column name="rooms" value="0"/>
+            <column name="floors" value="1"/>
+            <column name="construction_year" value="2000"/>
+            <column name="energy_rating" value="G"/>
+            <column name="garden" valueBoolean="false"/>
+            <column name="garage" valueBoolean="false"/>
+            <column name="terrace" valueBoolean="false"/>
+            <column name="basement" valueBoolean="false"/>
+            <column name="elevator" valueBoolean="false"/>
+            <column name="furnished" valueBoolean="false"/>
+            <column name="street" value="Rue du Moulin"/>
+            <column name="number" value="1"/>
+            <column name="postal_code" value="7500"/>
+            <column name="city" value="Tournai"/>
+            <column name="province" value="HAINAUT"/>
+            <column name="latitude" value="50.6045"/>
+            <column name="longitude" value="3.3875"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+            <column name="updated_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+    </changeSet>
+
+    <!-- Insert mock images for some properties -->
+    <changeSet id="008-insert-mock-property-images" author="feysma" runAlways="true">
+
+        <!-- House (IMMO-2026-001) - Image 1: Primary image -->
+        <insert tableName="property_images">
+            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-001')"/>
+            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
+            <column name="file_name" value="house-main.png"/>
+            <column name="content_type" value="image/png"/>
+            <column name="is_primary" valueBoolean="true"/>
+            <column name="display_order" value="1"/>
+        </insert>
+
+        <!-- House (IMMO-2026-001) - Image 2: Secondary image -->
+        <insert tableName="property_images">
+            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-001')"/>
+            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
+            <column name="file_name" value="house-garden.png"/>
+            <column name="content_type" value="image/png"/>
+            <column name="is_primary" valueBoolean="false"/>
+            <column name="display_order" value="2"/>
+        </insert>
+
+        <!-- Apartment (IMMO-2026-002) - Primary image -->
+        <insert tableName="property_images">
+            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-002')"/>
+            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
+            <column name="file_name" value="apartment-main.png"/>
+            <column name="content_type" value="image/png"/>
+            <column name="is_primary" valueBoolean="true"/>
+            <column name="display_order" value="1"/>
+        </insert>
+
+        <!-- Studio (IMMO-2026-003) - Primary image -->
+        <insert tableName="property_images">
+            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-003')"/>
+            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
+            <column name="file_name" value="studio-main.png"/>
+            <column name="content_type" value="image/png"/>
+            <column name="is_primary" valueBoolean="true"/>
+            <column name="display_order" value="1"/>
+        </insert>
+
+        <!-- Office (IMMO-2026-004) - Primary image -->
+        <insert tableName="property_images">
+            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-004')"/>
+            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
+            <column name="file_name" value="office-main.png"/>
+            <column name="content_type" value="image/png"/>
+            <column name="is_primary" valueBoolean="true"/>
+            <column name="display_order" value="1"/>
+        </insert>
+
+        <!-- Loft (IMMO-2026-005) - Primary image -->
+        <insert tableName="property_images">
+            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-005')"/>
+            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
+            <column name="file_name" value="loft-main.png"/>
+            <column name="content_type" value="image/png"/>
+            <column name="is_primary" valueBoolean="true"/>
+            <column name="display_order" value="1"/>
+        </insert>
+
+        <!-- Retail Space (IMMO-2026-006) - No image -->
+        <!-- Land (IMMO-2026-007) - No image -->
+
+    </changeSet>
+
+</databaseChangeLog>
