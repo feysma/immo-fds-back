@@ -241,72 +241,8 @@
 
     </changeSet>
 
-    <!-- Insert mock images for some properties -->
-    <changeSet id="008-insert-mock-property-images" author="feysma" runAlways="true">
+    <!-- Images désactivées temporairement -->
 
-        <!-- House (IMMO-2026-001) - Image 1: Primary image -->
-        <insert tableName="property_images">
-            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-001')"/>
-            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
-            <column name="file_name" value="house-main.png"/>
-            <column name="content_type" value="image/png"/>
-            <column name="is_primary" valueBoolean="true"/>
-            <column name="display_order" value="1"/>
-        </insert>
 
-        <!-- House (IMMO-2026-001) - Image 2: Secondary image -->
-        <insert tableName="property_images">
-            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-001')"/>
-            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
-            <column name="file_name" value="house-garden.png"/>
-            <column name="content_type" value="image/png"/>
-            <column name="is_primary" valueBoolean="false"/>
-            <column name="display_order" value="2"/>
-        </insert>
-
-        <!-- Apartment (IMMO-2026-002) - Primary image -->
-        <insert tableName="property_images">
-            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-002')"/>
-            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
-            <column name="file_name" value="apartment-main.png"/>
-            <column name="content_type" value="image/png"/>
-            <column name="is_primary" valueBoolean="true"/>
-            <column name="display_order" value="1"/>
-        </insert>
-
-        <!-- Studio (IMMO-2026-003) - Primary image -->
-        <insert tableName="property_images">
-            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-003')"/>
-            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
-            <column name="file_name" value="studio-main.png"/>
-            <column name="content_type" value="image/png"/>
-            <column name="is_primary" valueBoolean="true"/>
-            <column name="display_order" value="1"/>
-        </insert>
-
-        <!-- Office (IMMO-2026-004) - Primary image -->
-        <insert tableName="property_images">
-            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-004')"/>
-            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
-            <column name="file_name" value="office-main.png"/>
-            <column name="content_type" value="image/png"/>
-            <column name="is_primary" valueBoolean="true"/>
-            <column name="display_order" value="1"/>
-        </insert>
-
-        <!-- Loft (IMMO-2026-005) - Primary image -->
-        <insert tableName="property_images">
-            <column name="property_id" valueComputed="(SELECT id FROM properties WHERE reference = 'IMMO-2026-005')"/>
-            <column name="data" valueComputed="decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64')"/>
-            <column name="file_name" value="loft-main.png"/>
-            <column name="content_type" value="image/png"/>
-            <column name="is_primary" valueBoolean="true"/>
-            <column name="display_order" value="1"/>
-        </insert>
-
-        <!-- Retail Space (IMMO-2026-006) - No image -->
-        <!-- Land (IMMO-2026-007) - No image -->
-
-    </changeSet>
 
 </databaseChangeLog>
