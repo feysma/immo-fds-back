@@ -13,5 +13,6 @@
     <include file="changelogs/006-insert-default-super-admin.xml" relativeToChangelogFile="true"/>
     <include file="changelogs/007-cleanup-mock-properties.xml" relativeToChangelogFile="true"/>
     <include file="changelogs/008-insert-mock-properties.xml" relativeToChangelogFile="true"/>
+    <include file="changelogs/009-create-contact-notes-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

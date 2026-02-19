@@ -6,6 +6,8 @@ import be.feysdigitalservices.immofds.domain.enums.PropertyType;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "contact_requests")
@@ -50,8 +52,10 @@ public class ContactRequest {
     @Column(name = "estimated_price", precision = 12, scale = 2)
     private BigDecimal estimatedPrice;
 
-    @Column(name = "admin_notes", columnDefinition = "TEXT")
-    private String adminNotes;
+    @OneToMany(mappedBy = "contactRequest", cascade = CascadeType.ALL,
+               orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderBy("createdAt ASC")
+    private List<ContactNote> notes = new ArrayList<>();
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -111,8 +115,8 @@ public class ContactRequest {
     public BigDecimal getEstimatedPrice() { return estimatedPrice; }
     public void setEstimatedPrice(BigDecimal estimatedPrice) { this.estimatedPrice = estimatedPrice; }
 
-    public String getAdminNotes() { return adminNotes; }
-    public void setAdminNotes(String adminNotes) { this.adminNotes = adminNotes; }
+    public List<ContactNote> getNotes() { return notes; }
+    public void setNotes(List<ContactNote> notes) { this.notes = notes; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public LocalDateTime getUpdatedAt() { return updatedAt; }

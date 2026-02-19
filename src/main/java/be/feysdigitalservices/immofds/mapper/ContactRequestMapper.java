@@ -12,7 +12,7 @@ import org.mapstruct.Named;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ContactNoteMapper.class})
 public interface ContactRequestMapper {
 
     @Mapping(target = "id", ignore = true)
@@ -22,7 +22,7 @@ public interface ContactRequestMapper {
     @Mapping(target = "propertyAddress", ignore = true)
     @Mapping(target = "propertyType", ignore = true)
     @Mapping(target = "estimatedPrice", ignore = true)
-    @Mapping(target = "adminNotes", ignore = true)
+    @Mapping(target = "notes", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     ContactRequest toEntity(GeneralContactRequest request);
@@ -31,7 +31,7 @@ public interface ContactRequestMapper {
     @Mapping(target = "contactType", constant = "SELL_YOUR_HOME")
     @Mapping(target = "status", ignore = true)
     @Mapping(target = "propertyReference", ignore = true)
-    @Mapping(target = "adminNotes", ignore = true)
+    @Mapping(target = "notes", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     ContactRequest toEntity(SellYourHomeRequest request);
@@ -42,7 +42,7 @@ public interface ContactRequestMapper {
     @Mapping(target = "propertyAddress", ignore = true)
     @Mapping(target = "propertyType", ignore = true)
     @Mapping(target = "estimatedPrice", ignore = true)
-    @Mapping(target = "adminNotes", ignore = true)
+    @Mapping(target = "notes", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
     ContactRequest toEntity(VisitRequestDto request);
@@ -50,6 +50,7 @@ public interface ContactRequestMapper {
     @Mapping(target = "contactType", expression = "java(entity.getContactType().name())")
     @Mapping(target = "status", expression = "java(entity.getStatus().name())")
     @Mapping(target = "propertyType", expression = "java(entity.getPropertyType() != null ? entity.getPropertyType().name() : null)")
+    @Mapping(target = "notes", source = "notes")
     @Mapping(target = "createdAt", source = "createdAt", qualifiedByName = "formatDateTime")
     @Mapping(target = "updatedAt", source = "updatedAt", qualifiedByName = "formatDateTime")
     ContactRequestResponse toResponse(ContactRequest entity);

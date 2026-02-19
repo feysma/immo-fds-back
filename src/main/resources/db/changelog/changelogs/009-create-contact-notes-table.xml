@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="009-create-contact-notes-table" author="feysma">
+
+        <!-- Nouvelle table des notes -->
+        <createTable tableName="contact_notes">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="contact_request_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_contact_notes_contact_request"
+                             references="contact_requests(id)"/>
+            </column>
+            <column name="author_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_contact_notes_user"
+                             references="users(id)"/>
+            </column>
+            <column name="content" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex indexName="idx_contact_notes_contact_request_id" tableName="contact_notes">
+            <column name="contact_request_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_contact_notes_created_at" tableName="contact_notes">
+            <column name="created_at"/>
+        </createIndex>
+
+        <!-- Migration des notes existantes vers la nouvelle table -->
+        <!-- Auteur = le super admin par défaut (id=1, seul utilisateur existant au seed) -->
+        <sql>
+            INSERT INTO contact_notes (contact_request_id, author_id, content, created_at, updated_at)
+            SELECT id, 1, admin_notes, updated_at, updated_at
+            FROM contact_requests
+            WHERE admin_notes IS NOT NULL AND admin_notes != '';
+        </sql>
+
+        <!-- Suppression de l'ancienne colonne -->
+        <dropColumn tableName="contact_requests" columnName="admin_notes"/>
+
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,6 +1,7 @@
 package be.feysdigitalservices.immofds.dto.response;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public record ContactRequestResponse(
         Long id,
@@ -15,7 +16,7 @@ public record ContactRequestResponse(
         String propertyAddress,
         String propertyType,
         BigDecimal estimatedPrice,
-        String adminNotes,
+        List<ContactNoteResponse> notes,
         String createdAt,
         String updatedAt
 ) {}
