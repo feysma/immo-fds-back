@@ -16,5 +16,7 @@ public record PropertySummaryResponse(
         String province,
         String energyRating,
         Long primaryImageId,
+        Double latitude,
+        Double longitude,
         String createdAt
 ) {}
