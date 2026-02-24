@@ -5,15 +5,21 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <!-- Clean up mock data on every deployment -->
+    <!-- Clean up mock data only on every deployment -->
     <changeSet id="007-cleanup-mock-properties" author="feysma" runAlways="true">
-        <!-- Delete all property images first (foreign key constraint) -->
-        <delete tableName="property_images"/>
-        <!-- Delete all properties -->
-        <delete tableName="properties"/>
-        <!-- Reset sequences -->
-        <sql>ALTER SEQUENCE properties_id_seq RESTART WITH 1;</sql>
-        <sql>ALTER SEQUENCE property_images_id_seq RESTART WITH 1;</sql>
+        <!-- Delete only mock properties (by reference prefix), cascade supprime leurs images -->
+        <sql>
+            DELETE FROM properties
+            WHERE reference IN (
+                'IMMO-2026-001',
+                'IMMO-2026-002',
+                'IMMO-2026-003',
+                'IMMO-2026-004',
+                'IMMO-2026-005',
+                'IMMO-2026-006',
+                'IMMO-2026-007'
+            );
+        </sql>
     </changeSet>
 
 </databaseChangeLog>
