@@ -51,7 +51,7 @@ class PropertyServiceTest {
         Page<Property> page = new PageImpl<>(List.of(property));
         PropertySummaryResponse summary = new PropertySummaryResponse(
                 "IMM-2026-00001", "Belle maison", "Maison", "Vente", "Publié",
-                property.getPrice(), 150.0, 3, 2, "Bruxelles", "Bruxelles-Capitale", "B", null, "2026-01-01T00:00:00");
+                property.getPrice(), 150.0, 3, 2, "Bruxelles", "Bruxelles-Capitale", "B", null, null, null, "2026-01-01T00:00:00");
 
         when(propertyRepository.findAll(any(Specification.class), any(PageRequest.class))).thenReturn(page);
         when(propertyMapper.toSummaryResponse(property)).thenReturn(summary);

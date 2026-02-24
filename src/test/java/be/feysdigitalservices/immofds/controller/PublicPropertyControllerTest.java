@@ -45,7 +45,7 @@ class PublicPropertyControllerTest {
         PropertySummaryResponse summary = new PropertySummaryResponse(
                 "IMM-2026-00001", "Belle maison", "Maison", "Vente", "Publié",
                 new BigDecimal("350000"), 150.0, 3, 2, "Bruxelles", "Bruxelles-Capitale",
-                "B", null, "2026-01-01T00:00:00");
+                "B", null, null, null, "2026-01-01T00:00:00");
         PageResponse<PropertySummaryResponse> pageResponse = new PageResponse<>(
                 List.of(summary), 0, 12, 1, 1, true);
 
